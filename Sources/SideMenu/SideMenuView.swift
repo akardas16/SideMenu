@@ -56,7 +56,7 @@ public struct SideMenuView<Content:View>: View {
    public var menuBackgroundView:some View {
         ZStack(alignment:.init(horizontal: .leading, vertical: .center)){
             Color.pink.ignoresSafeArea().overlay(
-                Image(backImage).scaledToFill().ignoresSafeArea().blur(radius: blurRadius)
+                Image(uiImage: UIImage(named: backImage, in: .module, with: nil)!).scaledToFill().ignoresSafeArea().blur(radius: blurRadius)
             )
             
             VStack(alignment:.leading) {
