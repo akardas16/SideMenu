@@ -100,7 +100,7 @@ public struct SideMenuView<Content:View>: View {
 
 
 
-public struct MenuTabModel:Codable,Identifiable,Equatable {
+public struct MenuTabModel:Identifiable,Equatable {
     public var id: UUID = UUID()
     public var title:String
     public var imageName:String
