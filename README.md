@@ -4,7 +4,7 @@
 
 ### Swift Package Manager
 
-Open `Xcode`, go to `File -> Swift Packages -> Add Package Dependency` and enter `https://github.com/akardas16/SideMenu.git`
+Open `Xcode`, go to `File -> Swift Packages -> Add Package Dependency` and enter `https://github.com/akardas16/SideMenu.git` as Branch `main`
 
 You need to add `import SideMenu` 
 
