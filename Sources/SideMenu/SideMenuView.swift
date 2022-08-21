@@ -6,14 +6,14 @@ public struct SideMenuView<Content:View>: View {
     public var tabs:[MenuTabModel]
     @Binding var selectedTab:MenuTabModel
     @Binding var backColor:Color
-    public var backImage:String
+    public var backImage:String = "airplane"
     public var selectionColor:Color = Color.blue
     public var blurRadius:CGFloat = 32
     public var enable3D:Bool = true
     public let content:Content
     
     
-   public init(isMenuOpen:Binding<Bool>,tabs:[MenuTabModel] ,selectedTab:Binding<MenuTabModel>,backColor:Binding<Color>,backImage:String,selectionColor:Color = Color.blue,blurRadius:CGFloat = 32,enable3D:Bool = true, @ViewBuilder content: () -> Content) {
+   public init(isMenuOpen:Binding<Bool>,tabs:[MenuTabModel] ,selectedTab:Binding<MenuTabModel>,backColor:Binding<Color>,backImage:String = "airplane",selectionColor:Color = Color.blue,blurRadius:CGFloat = 32,enable3D:Bool = true, @ViewBuilder content: () -> Content) {
         self.tabs = tabs
         self.blurRadius = blurRadius
         self.enable3D = enable3D
