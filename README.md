@@ -47,4 +47,5 @@ let tabs = [MenuTabModel(title: "Home", imageName: "house"),MenuTabModel(title: 
 @State var selectedTab:MenuTabModel = MenuTabModel(title: "Home", imageName: "house")
 @State var backColor = Color.pink
 ```
-
+### Want to try library quickly?
+* Paste HomeView.swift file to your project and see UI on preview
