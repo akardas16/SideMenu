@@ -4,7 +4,7 @@
 
 ### Swift Package Manager
 
-Open `Xcode`, go to `File -> Swift Packages -> Add Package Dependency` and enter `https://github.com/akardas16/SideMenu.git` as Branch `main`
+Open `Xcode`, go to `File -> Swift Packages -> Add Package Dependency` and enter `https://github.com/xartistax/SideMenu.git` as Branch `main`
 
 You need to add `import SideMenu` 
 
@@ -16,36 +16,99 @@ With 3D effect<img src="https://user-images.githubusercontent.com/28716129/18577
 
 
 ```Swift
-SideMenuView(
-    isMenuOpen: $isMenuOpen,
-    tabs: tabs, // add your [MenuTabModel]
-    selectedTab: $selectedTab, //initial selectedTab
-    backColor: $backColor,     //acces view placeholder background
-    backImage: "airplane",     //add your background image! Default value is airplane
-    selectionColor: .purple,
-    blurRadius: 32,            // add blur radius for image default value is 32
-    enable3D: true //enable/disable 3D effect
-) {
-    if selectedTab.title == "Home" {
-        TabOne(isMenuOpen: $isMenuOpen, backColor: $backColor)
-    }else if selectedTab.title == "Profile" {
-        TabTwo(isMenuOpen: $isMenuOpen, backColor: $backColor)
-    }else if selectedTab.title == "Settings" {
-        TabThree(isMenuOpen: $isMenuOpen, backColor: $backColor)
-    }
-}
+
+
+    @State private var isMenuOpen: Bool = true
+    @State private var selectedTab: MenuTabModel = MenuTabModel(title: "Home", imageName: "house", individuaLinkColor: .red)
+    @State private var backColor = Color.white
+    
+    
+    let tabs = [
+            MenuTabModel(title: "Home", imageName: "house", individuaLinkColor: .orange),
+            MenuTabModel(title: "Profile", imageName: "person", individuaLinkColor: .blue),
+            MenuTabModel(title: "Settings", imageName: "gear", individuaLinkColor: .pink),
+            MenuTabModel(title: "Logout", imageName: "lock", individuaLinkColor: .pink)
+        ]
+
+
+                SideMenuView( 
+                    offset: 0.95, 
+                    isIndividualLinkColor: false,
+                    isMenuOpen: $isMenuOpen,
+                    tabs: tabs,
+                    selectedTab: $selectedTab, 
+                    backColor: $backColor,
+                    backImage: "menuBG",
+                    avatar: 
+                        
+                        AvatarView(
+                            imageName: "Avatar",
+                            size: 120,
+                            stroke: 0,
+                            shadowRadius: 16,
+                            username: "Philipp Smith",
+                            email: "p.smith@gmail.com"
+                        ),
+                    overlay: 0.5,
+                    
+                    selectionColor: .purple,
+                    blurRadius: 24,
+                    enable3D: false,
+                    selectedMenuView: .roundIcons,
+                    content:
+                        {
+                            switch selectedTab.title {
+                            case "Home":
+                                TabView(
+                                    isMenuOpen:
+                                        $isMenuOpen,
+                                    backColor: $backColor,
+                                   
+                                    text: "Tab 1",
+                                    bgColor: .pink)
+                            case "Profile":
+                                TabView(
+                                    isMenuOpen: $isMenuOpen, 
+                                    backColor: $backColor,
+                                    
+                                    text: "Tab 2",
+                                    bgColor: .green)
+                            case "Settings":
+                                TabView(
+                                    isMenuOpen: $isMenuOpen,
+                                    backColor: $backColor,
+                                   
+                                    text: "Tab 3",
+                                    bgColor: .purple)
+                            default:
+                                EmptyView()
+                            }
+                        }
+                
+
+
+
 ```
 
 * Example tabs array
 
 ```Swift
-let tabs = [MenuTabModel(title: "Home", imageName: "house"),MenuTabModel(title: "Profile", imageName: "person"),MenuTabModel( title: "Settings", imageName: "gear")]
+    let tabs = [
+            MenuTabModel(title: "Home", imageName: "house", individuaLinkColor: .orange),
+            MenuTabModel(title: "Profile", imageName: "person", individuaLinkColor: .blue),
+            MenuTabModel(title: "Settings", imageName: "gear", individuaLinkColor: .pink),
+            MenuTabModel(title: "Logout", imageName: "lock", individuaLinkColor: .pink)
+        ]
 ```
 
 ```Swift
-@State var isMenuOpen:Bool = true
-@State var selectedTab:MenuTabModel = MenuTabModel(title: "Home", imageName: "house")
-@State var backColor = Color.pink
+    @State private var isMenuOpen: Bool = true
+    @State private var selectedTab: MenuTabModel = MenuTabModel(title: "Home", imageName: "house", individuaLinkColor: .red)
+    @State private var backColor = Color.white
 ```
 ### Want to try library quickly?
 * Paste `HomeView.swift` file to your project and see UI on preview
+
+
+### Credits to
+[@akardas16] (https://www.github.com/akardas16)

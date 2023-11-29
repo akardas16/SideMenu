@@ -1,113 +1,133 @@
 //
 //  HomeView.swift
-//  Created by Abdullah Kardas on 20.08.2022.
+//  Created by Abdullah Kardas on 20.08.2022.
 //
 
 import SwiftUI
 import SideMenu
 
+@available(iOS 14.0, *)
 struct HomeView: View {
-    @State var isMenuOpen:Bool = true
-    let tabs = [MenuTabModel(title: "Home", imageName: "house"),MenuTabModel(title: "Profile", imageName: "person"),MenuTabModel( title: "Settings", imageName: "gear")]
+    @State private var isMenuOpen: Bool = true
+    @State private var selectedTab: MenuTabModel = MenuTabModel(title: "Home", imageName: "house", individuaLinkColor: .red)
+    @State private var backColor = Color.white
+    
 
-    @State var selectedTab:MenuTabModel = MenuTabModel(title: "Home", imageName: "house")
-    @State var backColor = Color.white
+     
     
     
+    @available(iOS 14.0, *)
     var body: some View {
+        
+        let tabs = [
+            MenuTabModel(title: "Home", imageName: "house", individuaLinkColor: .orange),
+            MenuTabModel(title: "Profile", imageName: "person", individuaLinkColor: .blue),
+            MenuTabModel(title: "Settings", imageName: "gear", individuaLinkColor: .pink),
+            MenuTabModel(title: "Logout", imageName: "lock", individuaLinkColor: .pink)
+        ]
+        
         ZStack {
-            SideMenuView(
-                isMenuOpen: $isMenuOpen,
-                tabs: tabs, // add your [MenuTabModel]
-                selectedTab: $selectedTab, //initial selectedTab
-                backColor: $backColor,     //acces view placeholder background
-                backImage: "airplane",     //add your background image! Default value is airplane
-                selectionColor: .purple,
-                blurRadius: 32,            // add blur radius for image default value is 32
-                enable3D: true //enable/disable 3D effect
-            ) {
-                if selectedTab.title == "Home" {
-                    TabOne(isMenuOpen: $isMenuOpen, backColor: $backColor)
-                }else if selectedTab.title == "Profile" {
-                    TabTwo(isMenuOpen: $isMenuOpen, backColor: $backColor)
-                }else if selectedTab.title == "Settings" {
-                    TabThree(isMenuOpen: $isMenuOpen, backColor: $backColor)
-                }
+           
+                SideMenuView( 
+                    offset: 0.95, 
+                    isIndividualLinkColor: false,
+                    isMenuOpen: $isMenuOpen,
+                    tabs: tabs,
+                    selectedTab: $selectedTab, 
+                    backColor: $backColor,
+                    backImage: "menuBG",
+                    avatar: 
+                        
+                        AvatarView(
+                            imageName: "Avatar",
+                            size: 120,
+                            stroke: 0,
+                            shadowRadius: 16,
+                            username: "Philipp Smith",
+                            email: "p.smith@gmail.com"
+                        ),
+                    overlay: 0.5,
+                    
+                    selectionColor: .purple,
+                    blurRadius: 24,
+                    enable3D: false,
+                    selectedMenuView: .roundIcons,
+                    content:
+                        {
+                            switch selectedTab.title {
+                            case "Home":
+                                TabView(
+                                    isMenuOpen:
+                                        $isMenuOpen,
+                                    backColor: $backColor,
+                                   
+                                    text: "Tab 1",
+                                    bgColor: .pink)
+                            case "Profile":
+                                TabView(
+                                    isMenuOpen: $isMenuOpen, 
+                                    backColor: $backColor,
+                                    
+                                    text: "Tab 2",
+                                    bgColor: .green)
+                            case "Settings":
+                                TabView(
+                                    isMenuOpen: $isMenuOpen,
+                                    backColor: $backColor,
+                                   
+                                    text: "Tab 3",
+                                    bgColor: .purple)
+                            default:
+                                EmptyView()
+                            }
+                        }
+                )  
             }
         }
-
     }
-}
 
+
+@available(iOS 14.0, *)
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
     }
 }
 
-struct TabOne: View {
-    @Binding var isMenuOpen:Bool
-    @Binding var backColor:Color
+@available(iOS 14.0, *)
+struct TabView: View {
+    @Binding var isMenuOpen: Bool
+    @Binding var backColor: Color
+    var text: String
+    var bgColor: Color
+    
+    
     var body: some View {
-        ZStack {//Your content is here
-            backColor.ignoresSafeArea().cornerRadius(isMenuOpen ? 12:0)
-            VStack(alignment:.leading) {
+        ZStack {
+            VStack(alignment: .leading) {
                 Button(action: { isMenuOpen.toggle() }) {
-                    Image(systemName: "line.3.horizontal").font(.title).foregroundColor(.white)
-                    
-                }.padding(.top, 12).padding(.leading, 12).frame(maxWidth: .infinity,alignment: .leading)
+                    Image(systemName: "line.3.horizontal")
+                        .font(.title)
+                        .foregroundColor(.white)
+                }
+                .padding(.top, 12)
+                .padding(.leading, 12)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
                 Spacer()
             }
+            
             Spacer()
-            Text("Tab 1").foregroundColor(.white).font(.title2).onTapGesture {
-                print("something")
-            }
-        }.onAppear{
-            backColor = .pink
+            
+            Text(text)
+                .foregroundColor(.white)
+                .font(.title)
+                .onTapGesture {
+                    print("something")
+                }
         }
-    }
-}
-struct TabTwo: View {
-    @Binding var isMenuOpen:Bool
-    @Binding var backColor:Color
-    var body: some View {
-        ZStack {//Your content is here
-            backColor.ignoresSafeArea().cornerRadius(isMenuOpen ? 12:0)
-            VStack(alignment:.leading) {
-                Button(action: { isMenuOpen.toggle() }) {
-                    Image(systemName: "line.3.horizontal").font(.title).foregroundColor(.white)
-                    
-                }.padding(.top, 12).padding(.leading, 12).frame(maxWidth: .infinity,alignment: .leading)
-                Spacer()
-            }
-            Spacer()
-            Text("Tab 2").foregroundColor(.white).font(.title2).onTapGesture {
-                print("something")
-            }
-        }.onAppear {
-            backColor = .green
-        }
-    }
-}
-struct TabThree: View {
-    @Binding var isMenuOpen:Bool
-    @Binding var backColor:Color
-    var body: some View {
-        ZStack {//Your content is here
-            backColor.ignoresSafeArea().cornerRadius(isMenuOpen ? 12:0)
-            VStack(alignment:.leading) {
-                Button(action: { isMenuOpen.toggle() }) {
-                    Image(systemName: "line.3.horizontal").font(.title).foregroundColor(.white)
-                    
-                }.padding(.top, 12).padding(.leading, 12).frame(maxWidth: .infinity,alignment: .leading)
-                Spacer()
-            }
-            Spacer()
-            Text("Tab 3").foregroundColor(.white).font(.title2).onTapGesture {
-                print("something")
-            }
-        }.onAppear {
-            backColor = .purple
+        .onAppear {
+            backColor = bgColor
         }
     }
 }
