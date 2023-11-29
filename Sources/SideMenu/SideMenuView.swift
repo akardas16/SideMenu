@@ -9,12 +9,12 @@ public enum MenuViewType {
 
 public struct AvatarView: View {
     
-    let imageName: String
-    let size: CGFloat
-    let stroke: CGFloat
-    let shadowRadius : CGFloat
-    let username : String?
-    let email : String?
+    public var imageName: String
+    public var size: CGFloat
+    public var stroke: CGFloat
+    public var shadowRadius : CGFloat
+    public var username : String?
+    public var email : String?
     
     @available(iOS 13.0, *)
     public var body: some View {
@@ -67,7 +67,7 @@ public struct SideMenuView<Content:View>: View {
     @Binding var selectedTab:MenuTabModel
     @Binding var backColor:Color
     public var backImage:String
-    var avatar: AvatarView?
+    public var avatar: AvatarView?
     public var overlay : CGFloat
     public var selectionColor:Color = Color.blue
     public var blurRadius:CGFloat
