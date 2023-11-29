@@ -16,6 +16,18 @@ public struct AvatarView: View {
     public var username : String?
     public var email : String?
     
+    
+    public init(imageName: String, size: CGFloat, stroke: CGFloat, shadowRadius: CGFloat, username: String?, email: String?) {
+        self.imageName = imageName
+        self.size = size
+        self.stroke = stroke
+        self.shadowRadius = shadowRadius
+        self.username = username
+        self.email = email
+    }
+    
+    
+    
     @available(iOS 13.0, *)
     public var body: some View {
         
