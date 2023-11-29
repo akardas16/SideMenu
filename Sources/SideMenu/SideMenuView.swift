@@ -67,7 +67,7 @@ public struct SideMenuView<Content:View>: View {
     @Binding var selectedTab:MenuTabModel
     @Binding var backColor:Color
     public var backImage:String
-    public var avatar: AvatarView?
+    var avatar: AvatarView?
     public var overlay : CGFloat
     public var selectionColor:Color = Color.blue
     public var blurRadius:CGFloat
