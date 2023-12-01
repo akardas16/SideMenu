@@ -1,5 +1,12 @@
 # xArtistaxSideMenu - SwiftUI 
 
+## Preview
+
+<img src="https://github.com/xartistax/xArtistaxSideMenu/assets/119945844/025ee141-80cc-4cbf-ae14-097690635189" width="25%" >
+<img src="https://github.com/xartistax/xArtistaxSideMenu/assets/119945844/743e8cfc-af48-49ed-9c62-ccf52693d176" width="25%" >
+
+
+
 ## Install
 
 ### Swift Package Manager
