@@ -16,49 +16,81 @@ You need to add `import xArtistaxSideMenu`
 
 ```Swift
 
-    import SwiftUI
-    import xArtistaxSideMenu
-
+    struct ContentView: View, TabItemView {
+    
     @State private var isMenuOpen: Bool = true
     @State private var selectedTab: MenuTabModel?
     
-    
-        var tabs: [MenuTabModel] {
-        return [
-            
-            MenuTabModel(
-                title: "Edit Profile",
-                subtitle: nil,
-                imageName: "house",
-                view: TestViewProfile(isMenuOpen: $isMenuOpen)),
-            
-            MenuTabModel(
-                title: "Application",
-                subtitle: nil,
-                imageName: "person",
-                view: TestViewApplications(isMenuOpen: $isMenuOpen) ) ,
-            
-            MenuTabModel(
-                title: "Logout",
-                subtitle: nil,
-                imageName: "lock",
-                view: TestViewLogout(isMenuOpen: $isMenuOpen))
-            
-        ]
+    var tabs: [MenuTabModel] {
+    return [
         
-    }
+        MenuTabModel(
+            title: "Logout",
+            subtitle: nil,
+            imageName: "lock",
+            view: SubView(isMenuOpen: $isMenuOpen))
+        
+    ]
     
-                SideMenuView (
-                isMenuOpen: $isMenuOpen,
-                selectedTab: $selectedTab,
-                selectedMenuView: .roundIcons,
-                rootView: TestViewHome(isMenuOpen: $isMenuOpen),
-                tabs: tabs
-            )
+}
+    
+    var body: some View {
+       
+            
+        SideMenuView (
+            isMenuOpen: $isMenuOpen,
+            selectedTab: $selectedTab,
+            selectedMenuView: .roundIcons,
+            rootView: RootView(isMenuOpen: $isMenuOpen),
+            tabs: tabs
+        )
+    }
+}
 
 ```
 
+## Available Parameters
 
+```Swift
+SideMenuView (
+    isMenuOpen: <#T##Binding<Bool>#>,
+    selectedTab: <#T##Binding<MenuTabModel?>#>,
+    offset: <#T##CGFloat#>,
+    menuOverlayOpacity: <#T##CGFloat#>,
+    blurRadius: <#T##CGFloat#>,
+    enable3D: <#T##Bool#>,
+    backImage: <#T##String#>,
+    iconColor: <#T##Color#>,
+    iconBg: <#T##Color#>,
+    selectionColor: <#T##Color#>,
+    menuOverlayColor: <#T##Color#>,
+    avatar: <#T##AvatarView?#>,
+    selectedMenuView: <#T##MenuViewType#>,
+    rootView: <#T##RootView#>,
+    tabs: <#T##[MenuTabModel]#>
+        )
+         
+```
+
+## SubViews
+
+```Swift
+struct SubView: View , TabItemView {
+    
+    @Binding var isMenuOpen: Bool
+    
+    var body: some View {
+        VStack {
+            Text("SubView")
+            Button(action: {
+                isMenuOpen.toggle()
+            }, label: {
+                Text("Close Button")
+            })
+        }
+    }
+}
+```
 
 ### Credits to 
 
