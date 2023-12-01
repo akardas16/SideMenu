@@ -7,7 +7,7 @@
 
 import SwiftUI
 @available(iOS 14.0, *)
-struct TestViewApplications: View {
+struct TestViewApplications: View , TabItemView{
     
     @Binding var isMenuOpen: Bool
     

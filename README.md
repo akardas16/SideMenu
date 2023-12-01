@@ -15,6 +15,7 @@ You need to add `import xArtistaxSideMenu`
 
 
 ```Swift
+
     import SwiftUI
     import xArtistaxSideMenu
 
@@ -22,15 +23,32 @@ You need to add `import xArtistaxSideMenu`
     @State private var selectedTab: MenuTabModel?
     
     
-    var tabs: [MenuTabModel] {
+        var tabs: [MenuTabModel] {
         return [
-            MenuTabModel(title: "Edit Profile", subtitle: nil, imageName: "house", view: AnyView(TestViewProfile(isMenuOpen: $isMenuOpen))),
-            MenuTabModel(title: "Application", subtitle: nil, imageName: "person", view: AnyView(TestViewProfile(isMenuOpen: $isMenuOpen))) ,
-            MenuTabModel(title: "Logout", subtitle: nil, imageName: "lock", view: AnyView(TestViewProfile(isMenuOpen: $isMenuOpen)))
+            
+            MenuTabModel(
+                title: "Edit Profile",
+                subtitle: nil,
+                imageName: "house",
+                view: TestViewProfile(isMenuOpen: $isMenuOpen)),
+            
+            MenuTabModel(
+                title: "Application",
+                subtitle: nil,
+                imageName: "person",
+                view: TestViewApplications(isMenuOpen: $isMenuOpen) ) ,
+            
+            MenuTabModel(
+                title: "Logout",
+                subtitle: nil,
+                imageName: "lock",
+                view: TestViewLogout(isMenuOpen: $isMenuOpen))
+            
         ]
+        
     }
     
-    SideMenuView (
+                SideMenuView (
                 isMenuOpen: $isMenuOpen,
                 selectedTab: $selectedTab,
                 selectedMenuView: .roundIcons,
@@ -40,8 +58,6 @@ You need to add `import xArtistaxSideMenu`
 
 ```
 
-### Want to try library quickly?
-* Paste `Example.swift` file to your project and see UI on preview
 
 
 ### Credits to

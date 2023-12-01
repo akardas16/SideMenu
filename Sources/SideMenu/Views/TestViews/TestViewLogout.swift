@@ -7,7 +7,7 @@
 
 import SwiftUI
 @available(iOS 13.0, *)
-struct TestViewLogout: View {
+struct TestViewLogout: View , TabItemView {
     
     @Binding var isMenuOpen: Bool
     

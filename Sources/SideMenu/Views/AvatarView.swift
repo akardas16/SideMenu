@@ -69,10 +69,4 @@ public struct AvatarView: View {
     }
 }
 
-@available(iOS 13.0, *)
-#Preview {
-    Group {
-        AvatarView(imageName: "Avatar", size: 150, stroke: 1, shadowRadius: 1, username: "Demian Füglistaler", email: "demian2009@gmail.com")
-    }
-    .padding()
-}
+

@@ -16,16 +16,10 @@ import SwiftUI
 
 
 @available(iOS 14.0, *)
-public struct SideMenuView <RootView: View>: View {
+public struct SideMenuView <RootView: View>: View  {
     
     @Binding private var isMenuOpen: Bool
     @Binding var selectedTab: MenuTabModel?
-    
- 
-    
-    
-
-    
     @State private var selectedView: AnyView?
     @State private var currentSelectedTab: MenuTabModel?
 
@@ -35,16 +29,13 @@ public struct SideMenuView <RootView: View>: View {
     public var blurRadius:CGFloat
     public var enable3D:Bool
     public var backImage:String
-    
     public var iconColor: Color
     public var iconBg: Color
-    
     public var selectionColor:Color
     public var menuOverlayColor : Color
-    
     public var avatar: AvatarView?
     public var selectedMenuView: MenuViewType
-    private var rootView: RootView
+    public var rootView: RootView
     public var tabs:[MenuTabModel]
 
     
@@ -55,13 +46,6 @@ public struct SideMenuView <RootView: View>: View {
         
         isMenuOpen: Binding<Bool>,
         selectedTab: Binding<MenuTabModel?>,
-
-    
-        
-    
-        
-    
-        
         offset: CGFloat = 0.95,
         menuOverlayOpacity : CGFloat =  0.75,
         blurRadius:CGFloat = 12,
@@ -71,43 +55,28 @@ public struct SideMenuView <RootView: View>: View {
         iconBg: Color = .gray.opacity(0.5),
         selectionColor:Color = .gray,
         menuOverlayColor : Color = .black,
-        
-        
         avatar:AvatarView? = nil,
         selectedMenuView: MenuViewType,
         rootView: RootView,
         tabs:[MenuTabModel]
-        
-        
     ) {
         _isMenuOpen = isMenuOpen
-        
         _selectedTab = selectedTab
-        
         _selectedView = State(initialValue: nil)
-        
-
-
         
         self.offset = offset
         self.menuOverlayOpacity = menuOverlayOpacity
         self.blurRadius = blurRadius
         self.enable3D = enable3D
         self.backImage = backImage
-        
         self.iconColor = iconColor
         self.iconBg = iconBg
-        
         self.selectionColor = selectionColor
         self.menuOverlayColor = menuOverlayColor
-        
         self.selectedMenuView = selectedMenuView
         self.rootView = rootView
         self.tabs = tabs
         self.avatar = avatar
-  
-        
- 
     }
 
    
@@ -134,14 +103,14 @@ public struct SideMenuView <RootView: View>: View {
                 RoundedRectangle(cornerRadius: isMenuOpen ? 24 : 0)
                     .foregroundColor(.pink)
                     .shadow(color: .black.opacity(0.6), radius: isMenuOpen ? 14 : 0)
-  
+                
                 
                 selectedView
                     .padding(24)
                 
-                     
                 
-                  
+                
+                
             }
             
             .offset(x: isMenuOpen ? (window()?.bounds.width ??  UIScreen.main.bounds.width) * offset : 0)
@@ -149,22 +118,11 @@ public struct SideMenuView <RootView: View>: View {
             .rotation3DEffect(.degrees(isMenuOpen && enable3D ? -32:0), axis: (x: 0, y: 1, z: 0))
             .animation(.linear(duration: 0.24), value: isMenuOpen)
             .ignoresSafeArea(edges: isMenuOpen ? []:[.all])
-            
-            .onAppear {
-                        selectedView = AnyView(rootView)
-                    }
+            .onAppear { selectedView = AnyView(rootView) }
             
             .gesture(
-                TapGesture().onEnded { 
-                    
-                        
-                    isMenuOpen.toggle()
-                    print("Taped Sheet")
-                     
-                    
-                   
-                    
-                    
+                TapGesture().onEnded {
+                    isMenuOpen = false
                 }
             )
             
@@ -186,7 +144,7 @@ public struct SideMenuView <RootView: View>: View {
   
     private func updateSelectedView(_ tab: MenuTabModel?) {
                 if let tab = tab {
-                    selectedView = tab.view
+                    selectedView = AnyView(tab.view)
                     
                 } else {
                     selectedView = nil

@@ -10,11 +10,19 @@ import SwiftUI
 import Combine
 
 @available(iOS 13.0, *)
+
+
+public protocol TabItemView: View {
+    // Define any required properties or methods
+}
+
+@available(iOS 13.0, *)
 public class MenuTabModel: ObservableObject, Identifiable, Equatable {
     
     public static func == (lhs: MenuTabModel, rhs: MenuTabModel) -> Bool {
             return lhs.id == rhs.id // Compare using the ID or any other property that uniquely identifies a MenuTabModel
         }
+    
     
     
     public var id: UUID = UUID()
@@ -29,7 +37,7 @@ public class MenuTabModel: ObservableObject, Identifiable, Equatable {
     public var title: String
     public var subtitle: String?
     public var imageName: String
-    public var view: AnyView
+    public var view: any TabItemView
    
 
     public init(
@@ -37,7 +45,7 @@ public class MenuTabModel: ObservableObject, Identifiable, Equatable {
         title: String,
         subtitle: String?,
         imageName: String,
-        view : AnyView
+        view: any TabItemView
         
     ) {
         self.id = id

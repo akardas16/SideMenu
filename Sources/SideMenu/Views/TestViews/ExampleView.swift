@@ -7,7 +7,7 @@ import SwiftUI
 import xArtistaxSideMenu
   
 @available(iOS 14.0, *)
-struct ExampleView: View {
+struct ExampleView: View, TabItemView {
     
     @State private var isMenuOpen: Bool = true
     @State private var selectedTab: MenuTabModel?
@@ -15,10 +15,27 @@ struct ExampleView: View {
     
     var tabs: [MenuTabModel] {
         return [
-            MenuTabModel(title: "Edit Profile", subtitle: nil, imageName: "house", view: AnyView(TestViewProfile(isMenuOpen: $isMenuOpen))),
-            MenuTabModel(title: "Application", subtitle: nil, imageName: "person", view: AnyView(TestViewProfile(isMenuOpen: $isMenuOpen))) ,
-            MenuTabModel(title: "Logout", subtitle: nil, imageName: "lock", view: AnyView(TestViewProfile(isMenuOpen: $isMenuOpen)))
+            
+            MenuTabModel(
+                title: "Edit Profile",
+                subtitle: nil,
+                imageName: "house",
+                view: TestViewProfile(isMenuOpen: $isMenuOpen)),
+            
+            MenuTabModel(
+                title: "Application",
+                subtitle: nil,
+                imageName: "person",
+                view: TestViewApplications(isMenuOpen: $isMenuOpen) ) ,
+            
+            MenuTabModel(
+                title: "Logout",
+                subtitle: nil,
+                imageName: "lock",
+                view: TestViewLogout(isMenuOpen: $isMenuOpen))
+            
         ]
+        
     }
     
     
