@@ -1,4 +1,4 @@
-# SideMenu - SwiftUI 
+# xArtistaxSideMenu - SwiftUI 
 
 ## Install
 
@@ -6,7 +6,7 @@
 
 Open `Xcode`, go to `File -> Swift Packages -> Add Package Dependency` and enter `https://github.com/xartistax/SideMenu.git` as Branch `main`
 
-You need to add `import SideMenu` 
+You need to add `import xArtistaxSideMenu` 
 
 ## Usage
 
@@ -16,7 +16,7 @@ You need to add `import SideMenu`
 
 ```Swift
     import SwiftUI
-    import SideMenu
+    import xArtistaxSideMenu
 
     @State private var isMenuOpen: Bool = true
     @State private var selectedTab: MenuTabModel?

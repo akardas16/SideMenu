@@ -4,7 +4,7 @@
 //
 
 import SwiftUI
-import SideMenu
+import xArtistaxSideMenu
   
 @available(iOS 14.0, *)
 struct ExampleView: View {
