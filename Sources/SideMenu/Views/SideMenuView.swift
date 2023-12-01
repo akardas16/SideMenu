@@ -31,6 +31,7 @@ public struct SideMenuView <RootView: View>: View  {
     public var backImage:String
     public var iconColor: Color
     public var iconBg: Color
+    public var bgColor: Color
     public var selectionColor:Color
     public var menuOverlayColor : Color
     public var avatar: AvatarView?
@@ -53,6 +54,7 @@ public struct SideMenuView <RootView: View>: View  {
         backImage:String = "menuBG",
         iconColor: Color = .white,
         iconBg: Color = .gray.opacity(0.5),
+        bgColor: Color = .white,
         selectionColor:Color = .gray,
         menuOverlayColor : Color = .black,
         avatar:AvatarView? = nil,
@@ -70,6 +72,7 @@ public struct SideMenuView <RootView: View>: View  {
         self.enable3D = enable3D
         self.backImage = backImage
         self.iconColor = iconColor
+        self.bgColor = bgColor
         self.iconBg = iconBg
         self.selectionColor = selectionColor
         self.menuOverlayColor = menuOverlayColor
@@ -101,7 +104,7 @@ public struct SideMenuView <RootView: View>: View  {
             
             ZStack {
                 RoundedRectangle(cornerRadius: isMenuOpen ? 24 : 0)
-                    .foregroundColor(.pink)
+                    .foregroundColor(bgColor)
                     .shadow(color: .black.opacity(0.6), radius: isMenuOpen ? 14 : 0)
                 
                 

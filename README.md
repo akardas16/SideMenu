@@ -32,7 +32,7 @@ You need to add `import xArtistaxSideMenu`
     return [
         
         MenuTabModel(
-            title: "Logout",
+            title: "SubView",
             subtitle: nil,
             imageName: "lock",
             view: SubView(isMenuOpen: $isMenuOpen))
@@ -69,6 +69,7 @@ SideMenuView (
     backImage: <#T##String#>,
     iconColor: <#T##Color#>,
     iconBg: <#T##Color#>,
+    bgColor: <#T##Color#>,
     selectionColor: <#T##Color#>,
     menuOverlayColor: <#T##Color#>,
     avatar: <#T##AvatarView?#>,
