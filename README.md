@@ -13,7 +13,7 @@
 
 Open `Xcode`, go to `File -> Swift Packages -> Add Package Dependency` and enter `https://github.com/xartistax/iosSwiftUISideMenu.git` as Branch `main`
 
-You need to add `import xArtistaxSideMenu` 
+You need to add `import  iosSwiftUISideMenu` 
 
 ## Usage
 
