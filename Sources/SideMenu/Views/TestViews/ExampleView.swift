@@ -1,23 +1,14 @@
-# SideMenu - SwiftUI 
+//
+//  HomeView.swift
+//  Created by Abdullah Kardas on 20.08.2022.
+//
 
-## Install
-
-### Swift Package Manager
-
-Open `Xcode`, go to `File -> Swift Packages -> Add Package Dependency` and enter `https://github.com/xartistax/SideMenu.git` as Branch `main`
-
-You need to add `import SideMenu` 
-
-## Usage
-
-
-* initilize `SideMenuView` with available parameters
-
-
-```Swift
-    import SwiftUI
-    import SideMenu
-
+import SwiftUI
+import SideMenu
+  
+@available(iOS 14.0, *)
+struct ExampleView: View {
+    
     @State private var isMenuOpen: Bool = true
     @State private var selectedTab: MenuTabModel?
     
@@ -30,19 +21,32 @@ You need to add `import SideMenu`
         ]
     }
     
-    SideMenuView (
+    
+    @available(iOS 14.0, *)
+    var body: some View {
+        
+        
+        
+        ZStack {
+           
+            
+              
+            SideMenuView (
                 isMenuOpen: $isMenuOpen,
                 selectedTab: $selectedTab,
                 selectedMenuView: .roundIcons,
                 rootView: TestViewHome(isMenuOpen: $isMenuOpen),
                 tabs: tabs
             )
-
-```
-
-### Want to try library quickly?
-* Paste `Example.swift` file to your project and see UI on preview
+            }
+        }
+    } 
 
 
-### Credits to
-[@akardas16] (https://www.github.com/akardas16)
+@available(iOS 14.0, *)
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        ExampleView()
+    }
+}
+
