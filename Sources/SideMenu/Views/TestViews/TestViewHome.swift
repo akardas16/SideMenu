@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 @available(iOS 13.0, *)
 struct TestViewHome: View {
     

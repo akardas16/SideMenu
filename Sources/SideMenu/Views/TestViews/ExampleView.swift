@@ -4,8 +4,12 @@
 //
 
 import SwiftUI
-import xArtistaxSideMenu
-  
+import iosSwiftUISideMenu
+
+
+
+
+
 @available(iOS 14.0, *)
 struct ExampleView: View, TabItemView {
     
