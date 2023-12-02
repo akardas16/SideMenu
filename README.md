@@ -98,6 +98,4 @@ struct SubView: View , TabItemView {
 }
 ```
 
-### Credits to 
 
-[@akardas16] (https://www.github.com/akardas16)
