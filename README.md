@@ -1,5 +1,9 @@
 # iOS SwiftUI SideMenu 📱
 
+[![Swift Version](https://img.shields.io/badge/swift-5.0-orange.svg)](https://swift.org/)
+[![Platform](https://img.shields.io/badge/platform-ios-lightgrey.svg)](https://developer.apple.com/ios/)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 ## Preview 🖼️
 
 ![Preview Image 1](https://github.com/xartistax/xArtistaxSideMenu/assets/119945844/025ee141-80cc-4cbf-ae14-097690635189)
