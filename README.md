@@ -1,24 +1,22 @@
-# iOS SwiftUI SideMenu 
+# iOS SwiftUI SideMenu 📱
 
-## Preview
+## Preview 🖼️
 
-<img src="https://github.com/xartistax/xArtistaxSideMenu/assets/119945844/025ee141-80cc-4cbf-ae14-097690635189" width="25%" >
-<img src="https://github.com/xartistax/xArtistaxSideMenu/assets/119945844/743e8cfc-af48-49ed-9c62-ccf52693d176" width="25%" >
+![Preview Image 1](https://github.com/xartistax/xArtistaxSideMenu/assets/119945844/025ee141-80cc-4cbf-ae14-097690635189)
+![Preview Image 2](https://github.com/xartistax/xArtistaxSideMenu/assets/119945844/743e8cfc-af48-49ed-9c62-ccf52693d176)
 
-
-
-## Install
+## Installation 🛠️
 
 ### Swift Package Manager
 
-Open `Xcode`, go to `File -> Swift Packages -> Add Package Dependency` and enter `https://github.com/xartistax/iosSwiftUISideMenu.git` as Branch `main`
+1. Open `Xcode`.
+2. Go to `File -> Swift Packages -> Add Package Dependency`.
+3. Enter `https://github.com/xartistax/iosSwiftUISideMenu.git` as Branch `main`.
+4. Import the package using `import iosSwiftUISideMenu`.
 
-You need to add `import  iosSwiftUISideMenu` 
+## Usage 🚀
 
-## Usage
-
-
-* initilize `SideMenuView` with available parameters
+Initialize `SideMenuView` with the available parameters:
 
 
 ```Swift
