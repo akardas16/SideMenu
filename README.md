@@ -9,6 +9,18 @@
 ![Preview Image 1](https://github.com/xartistax/xArtistaxSideMenu/assets/119945844/025ee141-80cc-4cbf-ae14-097690635189)
 ![Preview Image 2](https://github.com/xartistax/xArtistaxSideMenu/assets/119945844/743e8cfc-af48-49ed-9c62-ccf52693d176)
 
+
+iosSwiftUISideMenu is an intuitive SwiftUI package designed to streamline navigation and enhance user experience within your iOS applications. 📱✨
+
+
+## Features 🌟
+
+- **Effortless Navigation:** Seamlessly navigate through different views and sections with a user-friendly side menu.
+- **Customizable Interface:** Tailor the menu appearance, animations, and functionalities to match your app's aesthetics and requirements.
+- **SwiftUI Integration:** Leverage the power of SwiftUI for a smooth and native integration within your iOS app.
+
+
+
 ## Installation 🛠️
 
 ### Swift Package Manager
