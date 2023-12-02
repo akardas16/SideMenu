@@ -1,51 +1,117 @@
-# SideMenu - SwiftUI 
+# iOS SwiftUI SideMenu 📱
 
-## Install
+[![Swift Version](https://img.shields.io/badge/swift-5.0-orange.svg)](https://swift.org/)
+[![Platform](https://img.shields.io/badge/platform-ios-lightgrey.svg)](https://developer.apple.com/ios/)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+## Preview 🖼️
+
+![Preview Image 1](https://github.com/xartistax/xArtistaxSideMenu/assets/119945844/025ee141-80cc-4cbf-ae14-097690635189)
+![Preview Image 2](https://github.com/xartistax/xArtistaxSideMenu/assets/119945844/743e8cfc-af48-49ed-9c62-ccf52693d176)
+
+
+iosSwiftUISideMenu is an intuitive SwiftUI package designed to streamline navigation and enhance user experience within your iOS applications. 📱✨
+
+
+## Features 🌟
+
+- **Effortless Navigation:** Seamlessly navigate through different views and sections with a user-friendly side menu.
+- **Customizable Interface:** Tailor the menu appearance, animations, and functionalities to match your app's aesthetics and requirements.
+- **SwiftUI Integration:** Leverage the power of SwiftUI for a smooth and native integration within your iOS app.
+
+
+
+## Installation 🛠️
 
 ### Swift Package Manager
 
-Open `Xcode`, go to `File -> Swift Packages -> Add Package Dependency` and enter `https://github.com/akardas16/SideMenu.git` as Branch `main`
+1. Open `Xcode`.
+2. Go to `File -> Swift Packages -> Add Package Dependency`.
+3. Enter `https://github.com/xartistax/iosSwiftUISideMenu.git` as Branch `main`.
+4. Import the package using `import iosSwiftUISideMenu`.
 
-You need to add `import SideMenu` 
+## Usage 🚀
 
-## Usage
-Without 3D effect<img src="https://user-images.githubusercontent.com/28716129/185779303-b833211b-07e0-4bc5-b01a-723352ccf49b.gif" width="25%" >
-With 3D effect<img src="https://user-images.githubusercontent.com/28716129/185779405-1de7d9da-36fe-4aee-a3a5-13e67b9cf566.gif" width="25%" >
-
-* initilize `SideMenuView` with available parameters
+Initialize `SideMenuView` with the available parameters:
 
 
 ```Swift
-SideMenuView(
-    isMenuOpen: $isMenuOpen,
-    tabs: tabs, // add your [MenuTabModel]
-    selectedTab: $selectedTab, //initial selectedTab
-    backColor: $backColor,     //acces view placeholder background
-    backImage: "airplane",     //add your background image! Default value is airplane
-    selectionColor: .purple,
-    blurRadius: 32,            // add blur radius for image default value is 32
-    enable3D: true //enable/disable 3D effect
-) {
-    if selectedTab.title == "Home" {
-        TabOne(isMenuOpen: $isMenuOpen, backColor: $backColor)
-    }else if selectedTab.title == "Profile" {
-        TabTwo(isMenuOpen: $isMenuOpen, backColor: $backColor)
-    }else if selectedTab.title == "Settings" {
-        TabThree(isMenuOpen: $isMenuOpen, backColor: $backColor)
+
+    struct ContentView: View, TabItemView {
+    
+    @State private var isMenuOpen: Bool = true
+    @State private var selectedTab: MenuTabModel?
+    
+    var tabs: [MenuTabModel] {
+    return [
+        
+        MenuTabModel(
+            title: "SubView",
+            subtitle: nil,
+            imageName: "lock",
+            view: SubView(isMenuOpen: $isMenuOpen))
+        
+    ]
+    
+}
+    
+    var body: some View {
+       
+            
+        SideMenuView (
+            isMenuOpen: $isMenuOpen,
+            selectedTab: $selectedTab,
+            selectedMenuView: .roundIcons,
+            rootView: RootView(isMenuOpen: $isMenuOpen),
+            tabs: tabs
+        )
+    }
+}
+
+```
+
+## Available Parameters
+
+```Swift
+SideMenuView (
+    isMenuOpen: <#T##Binding<Bool>#>,
+    selectedTab: <#T##Binding<MenuTabModel?>#>,
+    offset: <#T##CGFloat#>,
+    menuOverlayOpacity: <#T##CGFloat#>,
+    blurRadius: <#T##CGFloat#>,
+    enable3D: <#T##Bool#>,
+    backImage: <#T##String#>,
+    iconColor: <#T##Color#>,
+    iconBg: <#T##Color#>,
+    bgColor: <#T##Color#>,
+    selectionColor: <#T##Color#>,
+    menuOverlayColor: <#T##Color#>,
+    avatar: <#T##AvatarView?#>,
+    selectedMenuView: <#T##MenuViewType#>,
+    rootView: <#T##RootView#>,
+    tabs: <#T##[MenuTabModel]#>
+        )
+         
+```
+
+## SubViews
+
+```Swift
+struct SubView: View , TabItemView {
+    
+    @Binding var isMenuOpen: Bool
+    
+    var body: some View {
+        VStack {
+            Text("SubView")
+            Button(action: {
+                isMenuOpen.toggle()
+            }, label: {
+                Text("Close Button")
+            })
+        }
     }
 }
 ```
 
-* Example tabs array
 
-```Swift
-let tabs = [MenuTabModel(title: "Home", imageName: "house"),MenuTabModel(title: "Profile", imageName: "person"),MenuTabModel( title: "Settings", imageName: "gear")]
-```
-
-```Swift
-@State var isMenuOpen:Bool = true
-@State var selectedTab:MenuTabModel = MenuTabModel(title: "Home", imageName: "house")
-@State var backColor = Color.pink
-```
-### Want to try library quickly?
-* Paste `HomeView.swift` file to your project and see UI on preview
